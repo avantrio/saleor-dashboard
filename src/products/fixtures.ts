@@ -251,12 +251,30 @@ export const product: (
     hasVariants: true,
     id: "pt76406",
     name: "Versatile",
-    taxType: {
-      __typename: "TaxType",
-      description: "standard",
-      taxCode: "standard"
-    },
-    variantAttributes: [
+    notSelectionVariantAttributes: [
+      {
+        __typename: "Attribute",
+        id: "isdugfhud",
+        inputType: AttributeInputTypeEnum.FILE,
+        name: "Attachment",
+        slug: "attachment",
+        valueRequired: true,
+        values: [
+          {
+            __typename: "AttributeValue",
+            file: {
+              __typename: "File",
+              contentType: "image/png",
+              url: "some-non-existing-url"
+            },
+            id: "gdghdgdhkkdae",
+            name: "File First Value",
+            slug: "file-first-value"
+          }
+        ]
+      }
+    ],
+    selectionVariantAttributes: [
       {
         __typename: "Attribute",
         id: "pta18161",
@@ -270,16 +288,66 @@ export const product: (
             file: null,
             id: "ptvav47282",
             name: "Black",
-            slug: "black",
-            sortOrder: 0
+            slug: "black"
           },
           {
             __typename: "AttributeValue",
             file: null,
             id: "ptvav17253",
             name: "White",
-            slug: "white",
-            sortOrder: 1
+            slug: "white"
+          }
+        ]
+      }
+    ],
+    taxType: {
+      __typename: "TaxType",
+      description: "standard",
+      taxCode: "standard"
+    },
+    variantAttributes: [
+      {
+        __typename: "Attribute",
+        id: "isdugfhud",
+        inputType: AttributeInputTypeEnum.FILE,
+        name: "Attachment",
+        slug: "attachment",
+        valueRequired: true,
+        values: [
+          {
+            __typename: "AttributeValue",
+            file: {
+              __typename: "File",
+              contentType: "image/png",
+              url: "some-non-existing-url"
+            },
+            id: "gdghdgdhkkdae",
+            name: "File First Value",
+            slug: "file-first-value"
+          }
+        ]
+      },
+      {
+        __typename: "Attribute",
+        id: "pta18161",
+        inputType: AttributeInputTypeEnum.DROPDOWN,
+        name: "Color",
+        slug: "color",
+        valueRequired: true,
+        values: [
+          {
+            __typename: "AttributeValue",
+            file: null,
+            id: "ptvav47282",
+            name: "Black",
+            slug: "black"
+          },
+          {
+            __typename: "AttributeValue",
+            file: null,
+            id: "ptvav17253",
+            name: "White",
+            slug: "white"
           }
         ]
       }
@@ -2535,94 +2603,6 @@ export const products = (
 
 export const variant = (placeholderImage: string): ProductVariant => ({
   __typename: "ProductVariant",
-  attributes: [
-    {
-      __typename: "SelectedAttribute",
-      attribute: {
-        __typename: "Attribute" as "Attribute",
-        id: "pta18161",
-        inputType: AttributeInputTypeEnum.DROPDOWN,
-        name: "Borders",
-        slug: "Borders",
-        valueRequired: true,
-        values: [
-          {
-            __typename: "AttributeValue",
-            file: null,
-            id: "ptav47282",
-            name: "portals",
-            slug: "portals"
-          },
-          {
-            __typename: "AttributeValue",
-            file: null,
-            id: "ptav17253",
-            name: "Baht",
-            slug: "Baht"
-          }
-        ]
-      },
-      values: [
-        {
-          __typename: "AttributeValue",
-          file: null,
-          id: "ptav47282",
-          name: "portals",
-          slug: "portals"
-        }
-      ]
-    },
-    {
-      __typename: "SelectedAttribute",
-      attribute: {
-        __typename: "Attribute" as "Attribute",
-        id: "pta22785",
-        inputType: AttributeInputTypeEnum.DROPDOWN,
-        name: "Legacy",
-        slug: "Legacy",
-        valueRequired: true,
-        values: [
-          {
-            __typename: "AttributeValue",
-            file: null,
-            id: "ptav31282",
-            name: "payment",
-            slug: "payment"
-          },
-          {
-            __typename: "AttributeValue",
-            file: null,
-            id: "ptav14907",
-            name: "Auto Loan Account",
-            slug: "Auto-Loan-Account"
-          },
-          {
-            __typename: "AttributeValue",
-            file: null,
-            id: "ptav27366",
-            name: "Garden",
-            slug: "Garden"
-          },
-          {
-            __typename: "AttributeValue",
-            file: null,
-            id: "ptav11873",
-            name: "override",
-            slug: "override"
-          }
-        ]
-      },
-      values: [
-        {
-          __typename: "AttributeValue",
-          file: null,
-          id: "ptav14907",
-          name: "Auto Loan Account",
-          slug: "Auto-Loan-Account"
-        }
-      ]
-    }
-  ],
   channelListings: [
     {
       __typename: "ProductVariantChannelListing",
@@ -2694,6 +2674,45 @@ export const variant = (placeholderImage: string): ProductVariant => ({
     }
   ],
   name: "Extended Hard",
+  notSelectionAttributes: [
+    {
+      __typename: "SelectedAttribute",
+      attribute: {
+        __typename: "Attribute",
+        id: "nfnyffcf8eyfm",
+        inputType: AttributeInputTypeEnum.FILE,
+        name: "Attachment",
+        slug: "attachment",
+        valueRequired: true,
+        values: [
+          {
+            __typename: "AttributeValue",
+            file: {
+              __typename: "File",
+              contentType: "image/png",
+              url: "some-non-existing-url"
+            },
+            id: "gdghdgdhkkdae",
+            name: "File First Value",
+            slug: "file-first-value"
+          }
+        ]
+      },
+      values: [
+        {
+          __typename: "AttributeValue",
+          file: {
+            __typename: "File",
+            contentType: "image/png",
+            url: "some-non-existing-url"
+          },
+          id: "gdghdgdhkkdae",
+          name: "File First Value",
+          slug: "file-first-value"
+        }
+      ]
+    }
+  ],
   privateMetadata: [],
   product: {
     __typename: "Product" as "Product",
@@ -2888,6 +2907,94 @@ export const variant = (placeholderImage: string): ProductVariant => ({
       }
     ]
   },
+  selectionAttributes: [
+    {
+      __typename: "SelectedAttribute",
+      attribute: {
+        __typename: "Attribute" as "Attribute",
+        id: "pta18161",
+        inputType: AttributeInputTypeEnum.DROPDOWN,
+        name: "Borders",
+        slug: "Borders",
+        valueRequired: true,
+        values: [
+          {
+            __typename: "AttributeValue",
+            file: null,
+            id: "ptav47282",
+            name: "portals",
+            slug: "portals"
+          },
+          {
+            __typename: "AttributeValue",
+            file: null,
+            id: "ptav17253",
+            name: "Baht",
+            slug: "Baht"
+          }
+        ]
+      },
+      values: [
+        {
+          __typename: "AttributeValue",
+          file: null,
+          id: "ptav47282",
+          name: "portals",
+          slug: "portals"
+        }
+      ]
+    },
+    {
+      __typename: "SelectedAttribute",
+      attribute: {
+        __typename: "Attribute" as "Attribute",
+        id: "pta22785",
+        inputType: AttributeInputTypeEnum.DROPDOWN,
+        name: "Legacy",
+        slug: "Legacy",
+        valueRequired: true,
+        values: [
+          {
+            __typename: "AttributeValue",
+            file: null,
+            id: "ptav31282",
+            name: "payment",
+            slug: "payment"
+          },
+          {
+            __typename: "AttributeValue",
+            file: null,
+            id: "ptav14907",
+            name: "Auto Loan Account",
+            slug: "Auto-Loan-Account"
+          },
+          {
+            __typename: "AttributeValue",
+            file: null,
+            id: "ptav27366",
+            name: "Garden",
+            slug: "Garden"
+          },
+          {
+            __typename: "AttributeValue",
+            file: null,
+            id: "ptav11873",
+            name: "override",
+            slug: "override"
+          }
+        ]
+      },
+      values: [
+        {
+          __typename: "AttributeValue",
+          file: null,
+          id: "ptav14907",
+          name: "Auto Loan Account",
+          slug: "Auto-Loan-Account"
+        }
+      ]
+    }
+  ],
   sku: "1230959124123",
   stocks: [
     {
