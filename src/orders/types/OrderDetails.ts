@@ -205,7 +205,7 @@ export interface OrderDetails_order_shippingAddress {
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;
-  locationData: string;
+  locationData?: string;
 }
 
 export interface OrderDetails_order_shippingMethod {
@@ -338,7 +338,7 @@ export interface OrderDetails_order {
   invoices: (OrderDetails_order_invoices | null)[] | null;
   channel: OrderDetails_order_channel;
   isPaid: boolean | null;
-  vinNumber: string | null;
+  vinNumber?: string | null;
 }
 
 export interface OrderDetails_shop_countries {

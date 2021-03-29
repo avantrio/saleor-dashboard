@@ -66,7 +66,7 @@ module.exports = (env, argv) => {
       contentBase: path.join(__dirname, dashboardBuildPath),
       historyApiFallback: true,
       hot: true,
-      port: 9000
+      port: 9001
     },
     devtool: "sourceMap",
     entry: {
@@ -100,7 +100,7 @@ module.exports = (env, argv) => {
       splitChunks: false
     },
     output,
-    plugins: [checkerPlugin, environmentPlugin, htmlWebpackPlugin],
+    plugins: [environmentPlugin, htmlWebpackPlugin],
     resolve: {
       extensions: [".js", ".jsx", ".ts", ".tsx"],
       plugins: [pathsPlugin]
