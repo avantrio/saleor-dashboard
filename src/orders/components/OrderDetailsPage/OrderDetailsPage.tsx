@@ -32,6 +32,7 @@ import OrderInvoiceList from "../OrderInvoiceList";
 import OrderPayment from "../OrderPayment/OrderPayment";
 import OrderUnfulfilledItems from "../OrderUnfulfilledItems/OrderUnfulfilledItems";
 import Title from "./Title";
+import OrderVinNumber from "../OrderVinNumber";
 
 const useStyles = makeStyles(
   theme => ({
@@ -262,6 +263,8 @@ const OrderDetailsPage: React.FC<OrderDetailsPageProps> = props => {
                 />
                 <CardSpacer />
                 <OrderCustomerNote note={maybe(() => order.customerNote)} />
+                <CardSpacer />
+                <OrderVinNumber vinNumber={maybe(() => order.vinNumber)} />
               </div>
             </Grid>
             <SaveButtonBar

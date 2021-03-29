@@ -95,6 +95,20 @@ const OrderCustomer: React.FC<OrderCustomerProps> = props => {
   const billingAddress = maybe(() => order.billingAddress);
   const shippingAddress = maybe(() => order.shippingAddress);
 
+  const onViewMapDirections = () => {
+    try{
+      const locationData = JSON.parse(shippingAddress.locationData);
+
+      if(locationData.place_id){
+        const url = `https://www.google.com/maps/search/?api=1&query=${locationData.lat},${locationData.lng}`;
+        window.open(url, "_blank");
+      }
+    }catch(e){
+      
+    }
+    
+  }
+
   return (
     <Card>
       <CardTitle
@@ -291,6 +305,14 @@ const OrderCustomer: React.FC<OrderCustomerProps> = props => {
                 : shippingAddress.country.country}
             </Typography>
             <Typography>{shippingAddress.phone}</Typography>
+            <Button
+                color="primary"
+                variant="text"
+                onClick={onViewMapDirections}
+                disabled={!shippingAddress.locationData}
+              >
+                View on Google maps
+            </Button>
           </>
         )}
       </CardContent>

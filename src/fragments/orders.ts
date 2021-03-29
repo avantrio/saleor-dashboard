@@ -199,6 +199,7 @@ export const fragmentOrderDetails = gql`
       currencyCode
     }
     isPaid
+    vinNumber
   }
 `;
 
