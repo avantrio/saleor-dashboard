@@ -200,6 +200,16 @@ export const fragmentOrderDetails = gql`
     }
     isPaid
     vinNumber
+    returns{
+      id
+      lines{
+        orderLine{
+          ...OrderLineFragment
+        }
+        quantity
+      }
+      status
+    }
   }
 `;
 

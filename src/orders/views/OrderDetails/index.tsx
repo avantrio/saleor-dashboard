@@ -10,7 +10,7 @@ import useUser from "@saleor/hooks/useUser";
 import { commonMessages } from "@saleor/intl";
 import OrderCannotCancelOrderDialog from "@saleor/orders/components/OrderCannotCancelOrderDialog";
 import OrderInvoiceEmailSendDialog from "@saleor/orders/components/OrderInvoiceEmailSendDialog";
-import { useOrderConfirmMutation } from "@saleor/orders/mutations";
+import { useOrderConfirmMutation, orderConfirmReturn } from "@saleor/orders/mutations";
 import { InvoiceRequest } from "@saleor/orders/types/InvoiceRequest";
 import useCustomerSearch from "@saleor/searches/useCustomerSearch";
 import getOrderErrorMessage from "@saleor/utils/errors/order";
@@ -56,6 +56,7 @@ import {
 } from "../../urls";
 import OrderAddressFields from "./OrderAddressFields";
 import { OrderDetailsMessages } from "./OrderDetailsMessages";
+import { useMutation } from "react-apollo";
 
 interface OrderDetailsProps {
   id: string;
@@ -116,6 +117,28 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({ id, params }) => {
       });
     }
   });
+
+  const [confirmOrderReturn] = useMutation(orderConfirmReturn);
+
+  const onReturnConfirm = async(returnId) => {
+    try{
+      const result = await confirmOrderReturn({ variables: { id: returnId } });
+      console.log(result);
+
+      const isError = !!result.data.confirmOrderReturn.refundRequestErrors.length;
+      notify({
+        status: isError ? "error" : "success",
+        text: isError
+          ? result.data.confirmOrderReturn.refundRequestErrors[0].message
+          : "Confirmed Return Request"
+      });
+    }catch{
+      notify({
+        status: "error",
+        text: "Error confirming return request"
+      });
+    }
+  }
 
   return (
     <TypedOrderDetailsQuery displayLoader variables={{ id }}>
@@ -308,6 +331,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({ id, params }) => {
                             openModal("invoice-send", { id })
                           }
                           onSubmit={handleSubmit}
+                          onReturnConfirm={onReturnConfirm}
                         />
                         <OrderCannotCancelOrderDialog
                           onClose={closeModal}

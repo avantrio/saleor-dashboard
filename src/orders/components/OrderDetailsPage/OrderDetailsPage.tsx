@@ -33,6 +33,7 @@ import OrderPayment from "../OrderPayment/OrderPayment";
 import OrderUnfulfilledItems from "../OrderUnfulfilledItems/OrderUnfulfilledItems";
 import Title from "./Title";
 import OrderVinNumber from "../OrderVinNumber";
+import OrderReturn from "../OrderReturn";
 
 const useStyles = makeStyles(
   theme => ({
@@ -80,6 +81,7 @@ export interface OrderDetailsPageProps extends UserPermissionProps {
   onInvoiceGenerate();
   onInvoiceSend(invoiceId: string);
   onSubmit(data: MetadataFormData): SubmitPromise;
+  onReturnConfirm();
 }
 
 const OrderDetailsPage: React.FC<OrderDetailsPageProps> = props => {
@@ -104,7 +106,8 @@ const OrderDetailsPage: React.FC<OrderDetailsPageProps> = props => {
     onInvoiceClick,
     onInvoiceGenerate,
     onInvoiceSend,
-    onSubmit
+    onSubmit,
+    onReturnConfirm
   } = props;
   const classes = useStyles(props);
 
@@ -225,6 +228,18 @@ const OrderDetailsPage: React.FC<OrderDetailsPageProps> = props => {
                   )
                 )}
                 <CardSpacer />
+
+                {order?.returns.length > 0 && 
+                  <>
+                    <OrderReturn 
+                      fulfillment={order?.returns[0]}
+                      orderNumber={order?.id}
+                      onReturnConfirmed={onReturnConfirm}
+                    />
+                    <CardSpacer />
+                  </>
+                }
+                
                 <OrderPayment
                   order={order}
                   onCapture={onPaymentCapture}

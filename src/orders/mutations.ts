@@ -578,3 +578,19 @@ export const useOrderSettingsUpdateMutation = makeMutation<
   OrderSettingsUpdate,
   OrderSettingsUpdateVariables
 >(orderSettingsUpdateMutation);
+
+
+export const orderConfirmReturn = gql`
+  mutation confirmOrderReturn($id: ID!){
+    confirmOrderReturn(orderReturn: $id){
+      returns{
+        id
+        status
+      }
+      refundRequestErrors{
+        field
+        message
+      }
+    }
+  }
+`;

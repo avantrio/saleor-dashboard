@@ -307,6 +307,17 @@ export interface OrderDetails_order_channel {
   currencyCode: string;
 }
 
+export interface OrderDetails_return_OrderLine {
+  orderLine: (OrderDetails_order_lines | null)[];
+  quantity: number;
+}
+
+export interface OrderDetails_return {
+  id: string;
+  lines: (OrderDetails_return_OrderLine| null)[];
+  status: string;
+}
+
 export interface OrderDetails_order {
   __typename: "Order";
   id: string;
@@ -339,6 +350,7 @@ export interface OrderDetails_order {
   channel: OrderDetails_order_channel;
   isPaid: boolean | null;
   vinNumber?: string | null;
+  returns: (OrderDetails_return| null)[];
 }
 
 export interface OrderDetails_shop_countries {
